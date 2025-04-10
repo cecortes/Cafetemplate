@@ -1,4 +1,5 @@
 ---
+import { string } from 'astro:schema';
 import IconButton from './IconButton.astro';
 
 interface Props {
@@ -6,6 +7,14 @@ interface Props {
 }
 
 const { img } = Astro.props;
+
+
+const texts= {
+  title: "Rentoy",
+  subtitle: "Un rincón para disfrutar del mejor café y comida casera en Puebla.",
+  copy1: "Ubicado en el corazón del Centro Histórico de Puebla, Rentoy Café Restaurante es mucho más que un lugar para tomar café: es un refugio cultural y gastronómico que invita a detener el tiempo.",
+  copy2: "Justo al lado del majestuoso Teatro Principal y enmarcado por el encanto bohemio del Barrio del Artista, Rentoy se convierte en una parada obligada para locales y visitantes que buscan una experiencia única.",
+}
 ---
 
 <section>
@@ -16,17 +25,18 @@ const { img } = Astro.props;
   <div class="main-container">
 
     <div class="titles-container glass-title w-[90%]">
-      <h1 class="title">Rentoy</h1>
-      <h2 class="subtitle">Un rincón para disfrutar del mejor café y comida casera en Puebla.</h2>
+      <h1 class="title">{texts.title}</h1>
+      <h2 class="subtitle">{texts.subtitle}</h2>
     </div>
   
     <div class="content-container flex flex-column md:flex-row md:justify-between md:mt-4 md:w-[90%] md:gap-4 w-[90%]">
       <article class="glass md:w-[55%]">
         <p class="copy">
-          Ubicado en el corazón del Centro Histórico de Puebla, Rentoy Café Restaurante es mucho más que un lugar para tomar café: es un refugio cultural y gastronómico que invita a detener el tiempo.
+          {texts.copy1}
         </p>
         <br>
-        <p class="copy">Justo al lado del majestuoso Teatro Principal y enmarcado por el encanto bohemio del Barrio del Artista, Rentoy se convierte en una parada obligada para locales y visitantes que buscan una experiencia única.
+        <p class="copy">
+          {texts.copy2}
         </p>
       </article>
 
@@ -48,12 +58,21 @@ const { img } = Astro.props;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     z-index: -1;
     pointer-events: none;
+  }
+  
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
   }
   .hero::before {
     content: "";
