@@ -1,10 +1,19 @@
 ---
 import { Icon } from 'astro-icon/components';
+
+interface Props {
+  href: string;
+  aria: string;
+  name: string;
+  text: string;
+}
+
+const { href, aria, name, text } = Astro.props;
 ---
 
-<a href="#" id="link" class="flex flex-row items-center justify-center gap-2 hover:cursor-pointer hover:scale-105 transition-transform duration-300" aria-label="Next section">
-  <Icon name="next"/>
-  <span>Descubrir más</span>
+<a href={href} id="link" class="flex flex-row items-center justify-center gap-2 hover:cursor-pointer hover:scale-105 transition-transform duration-300" aria-label={aria}>
+  <Icon name={name}/>
+  <span>{text}</span>
 </a>
 
 <style>
