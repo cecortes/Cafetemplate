@@ -1,0 +1,105 @@
+---
+---
+<section id="carrusel" class="carrusel" data-reveal="right">
+
+  <div class="carrusel-title">
+      <h2>Descubre nuestro menú</h2>
+      <p>Disfruta de una experiencia única con nuestros platillos y bebidas.</p>
+  </div>
+
+  <div class="carrusel-container">
+    
+    <div class="carrusel-item">
+      <img src="/cafe1.webp" alt="Café espresso clásico" />
+      <div class="info">
+        <h3>Espresso Clásico</h3>
+        <p>Un shot intenso de café arábica, ideal para iniciar tu día. <strong>$45 MXN</strong></p>
+      </div>
+    </div>
+    <div class="carrusel-item">
+      <img src="/desayuno.webp" alt="Desayuno con pan artesanal" />
+      <div class="info">
+        <h3>Desayuno Rentoy</h3>
+        <p>Pan artesanal con huevo, tocino y jugo natural. <strong>$120 MXN</strong></p>
+      </div>
+    </div>
+    <div class="carrusel-item">
+      <img src="/latte.webp" alt="Latte en taza decorada" />
+      <div class="info">
+        <h3>Latte Cremoso</h3>
+        <p>Café con leche vaporizada y arte latte. <strong>$55 MXN</strong></p>
+      </div>
+    </div>
+    <div class="carrusel-item">
+      <img src="/ambiente.webp" alt="Interior cálido del restaurante" />
+      <div class="info">
+        <h3>Ambiente Rentoy</h3>
+        <p>Disfruta tu bebida en un espacio cálido y acogedor. <strong>Incluido</strong></p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* Carrusel personalizado con imágenes de 512px y texto */
+.carrusel {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to right, #ebdd43c2, #783b05c2);
+  overflow: hidden;
+}
+
+.carrusel-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  width: 100%;
+  padding: 2rem;
+  gap: 2rem;
+  scroll-padding-left: 2rem;
+}
+
+.carrusel-item {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  width: 512px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.carrusel-item img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+.carrusel-item .info {
+  padding: 1rem;
+}
+
+.carrusel-item .info h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #5a3e36;
+}
+
+.carrusel-item .info p {
+  margin: 0.5rem 0 0;
+  color: #555;
+}
+
+.carrusel-container::-webkit-scrollbar {
+  display: none;
+}
+
+.carrusel-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+</style>
