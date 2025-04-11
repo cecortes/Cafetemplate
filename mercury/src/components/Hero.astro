@@ -1,5 +1,4 @@
 ---
-import { string } from 'astro:schema';
 import IconButton from './IconButton.astro';
 
 interface Props {
@@ -17,10 +16,7 @@ const texts= {
 }
 ---
 
-<section>
-
-  <!-- Background Image -->
-  <div class="hero" style={{ backgroundImage: `url(${img})` }} aria-hidden="true"></div>
+<section class="hero" style={{ backgroundImage: `url(${img})` }} aria-hidden="true">
 
   <div class="main-container">
 
@@ -29,7 +25,8 @@ const texts= {
       <h2 class="subtitle">{texts.subtitle}</h2>
     </div>
   
-    <div class="content-container flex flex-column md:flex-row md:justify-between md:mt-4 md:w-[90%] md:gap-4 w-[90%]">
+    <div class="content-container flex flex-column md:flex-row md:justify-between md:mt-4 md:w-[90%] md:gap-4 w-[90%] mb-2">
+
       <article class="glass md:w-[55%]">
         <p class="copy">
           {texts.copy1}
@@ -40,10 +37,10 @@ const texts= {
         </p>
       </article>
 
-      <div class="container hidden md:w-[45%] mb:block"></div>
+      <div class="container hidden md:w-[40%] md:block"></div>
     </div>
 
-    <IconButton class="mt-4 text-slate-900" icon="next" aria-label="Next section" />
+    <IconButton class="text-slate-900" icon="next" aria-label="Next section" />
 
   </div>
 
@@ -52,20 +49,7 @@ const texts= {
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-  @import "tailwindcss";
-  .hero {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: -1;
-    pointer-events: none;
-  }
-  
+  @import "tailwindcss";  
   .hero {
     display: flex;
     align-items: center;
@@ -73,30 +57,34 @@ const texts= {
     text-align: center;
     color: white;
     position: relative;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
+
   .hero::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(58, 58, 58, 0.1);;
+    background: rgba(58, 58, 58, .3);;
   }
   .main-container {
-    position: relative;
-    z-index: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     text-align: center;
-    height: 100vh;
+    position: relative;
+    z-index: 1;
+    max-width: 95vw;
+    max-height: 100vh;
+    padding: 1rem;
   }
 
   .titles-container {
-    margin: 0 auto;
-    padding: 0 2rem;
-    max-width: 95%;
-    margin-bottom: 2rem;
-    @apply mt-4 rounded-xl p-4;
+    max-width: 100%;
+    @apply rounded-xl;
   }
 
   .title {
@@ -106,7 +94,7 @@ const texts= {
     font-style: normal;
     text-shadow: 5px 2px 10px rgb(0, 0, 0);
     color: #f4f1f1;
-    @apply mb-4 text-4xl md:text-7xl;
+    @apply mb-1 text-3xl md:text-7xl;
   }
 
   .subtitle {
@@ -116,7 +104,7 @@ const texts= {
     font-style: italic;
     text-shadow: 5px 2px 10px rgb(0, 0, 0);
     color: #eae7b6;
-    @apply m-2 mb-6 text-2xl md:text-3xl;
+    @apply m-2 mb-2 text-xl md:text-3xl md:mb-8;
   }
 
   .copy {
@@ -131,7 +119,7 @@ const texts= {
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 1.5rem;
+    padding: 1rem;
   }
 
   .glass-title {
@@ -143,7 +131,8 @@ const texts= {
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(223, 157, 24, 0.3);
     padding: 0 2rem;
-    margin-top: 2rem;
+    margin: 1rem 0 1rem 0;
+    @apply px-2 md:px-8;
   }
 
 </style>
