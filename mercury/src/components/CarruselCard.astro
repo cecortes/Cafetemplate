@@ -1,0 +1,56 @@
+---
+interface Props {
+  title: string;
+  desc: string;
+  price: string;
+  img: string;
+  alt: string;
+}
+
+const { title, desc, price, img, alt } = Astro.props;
+---
+<div class="carrusel-item">
+  <img src={img} alt={alt} />
+    <div class="info">
+      <h3>{title}</h3>
+      <p>{desc} <strong>{price}</strong></p>
+    </div>
+</div>
+
+<style>
+@import 'tailwindcss';
+
+  .carrusel-item {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  @apply w-[100%] md:w-[512px];
+}
+
+.carrusel-item img {
+  object-fit: cover;
+  @apply h-[250px] w-[100%] md:h-[250px];
+}
+
+.carrusel-item .info {
+  padding: 1rem;
+}
+
+.carrusel-item .info h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #5a3e36;
+  @apply md:text-2xl;
+}
+
+.carrusel-item .info p {
+  margin: 0.5rem 0 0;
+  color: #555;
+  text-wrap: pretty;
+  text-align: justify;
+  @apply md:text-[1.2rem];
+}
+</style>

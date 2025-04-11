@@ -1,47 +1,72 @@
 ---
+import CarruselCard from "@/components/CarruselCard.astro";
+import IconButton from "@/components/IconButton.astro";
+
 ---
 <section id="carrusel" class="carrusel" data-reveal="right">
 
   <div class="carrusel-title">
-      <h2>Descubre nuestro menú</h2>
+      <h2>Especiales Rentoy</h2>
       <p>Disfruta de una experiencia única con nuestros platillos y bebidas.</p>
   </div>
 
   <div class="carrusel-container">
     
-    <div class="carrusel-item">
-      <img src="/cafe1.webp" alt="Café espresso clásico" />
-      <div class="info">
-        <h3>Espresso Clásico</h3>
-        <p>Un shot intenso de café arábica, ideal para iniciar tu día. <strong>$45 MXN</strong></p>
-      </div>
-    </div>
-    <div class="carrusel-item">
-      <img src="/desayuno.webp" alt="Desayuno con pan artesanal" />
-      <div class="info">
-        <h3>Desayuno Rentoy</h3>
-        <p>Pan artesanal con huevo, tocino y jugo natural. <strong>$120 MXN</strong></p>
-      </div>
-    </div>
-    <div class="carrusel-item">
-      <img src="/latte.webp" alt="Latte en taza decorada" />
-      <div class="info">
-        <h3>Latte Cremoso</h3>
-        <p>Café con leche vaporizada y arte latte. <strong>$55 MXN</strong></p>
-      </div>
-    </div>
-    <div class="carrusel-item">
-      <img src="/ambiente.webp" alt="Interior cálido del restaurante" />
-      <div class="info">
-        <h3>Ambiente Rentoy</h3>
-        <p>Disfruta tu bebida en un espacio cálido y acogedor. <strong>Incluido</strong></p>
-      </div>
-    </div>
+    <CarruselCard 
+    title="Espresso árabe" 
+    desc="Un exquisito café con extracto árabe para iniciar tu día" price="$45 MXN" 
+    img="/cafe1.webp" 
+    alt="Café artesanal"/>
+
+    <CarruselCard 
+    title="Desayuno Rentoy" 
+    desc="Pan artesanal con huevo, tocino y jugo natural."
+    price="$120 MXN"
+    img="/desayuno.webp" 
+    alt="Desayuno con pan artesanal"/>
+
+    <CarruselCard 
+    title="Latte Cremoso" 
+    desc="Café con leche vaporizada y arte latte."
+    price="$55 MXN"
+    img="/latte.webp" 
+    alt="Latte en taza decorada"/>
+
+    <CarruselCard 
+    title="Cerveza de Barril" 
+    desc="Cerveza de barril para momentos especiales."
+    price="$65 MXN"
+    img="/barril.webp" 
+    alt="Cerveza de barril"/>
+
+    <CarruselCard 
+    title="Cerveza Heineken" 
+    desc="Cerveza fría para disfrutar con amigos. Tarro o michelada"
+    price="$40 MXN"
+    img="/cerveza.webp" 
+    alt="Cerveza fría para disfrutar con amigos. Tarro o michelada"/>
+
+    <CarruselCard 
+    title="Cuba Libre" 
+    desc="Cuba libre con un toque especial y el sabor de la Habana"
+    price="$80 MXN"
+    img="/cubalibre.webp" 
+    alt="Cuba libre"/>
+
+    <CarruselCard 
+    title="Ambiente Rentoy" 
+    desc="Disfruta tu bebida en un espacio cálido y acogedor."
+    price="Incluido"
+    img="/ambiente.webp" 
+    alt="Interior cálido del restaurante"/>
 
   </div>
+
+  <IconButton href='/' aria='Next section' name='next' text='Descubrir más'/>
 </section>
 
 <style>
+@import 'tailwindcss';
 /* Carrusel personalizado con imágenes de 512px y texto */
 .carrusel {
   height: 100vh;
@@ -61,37 +86,7 @@
   padding: 2rem;
   gap: 2rem;
   scroll-padding-left: 2rem;
-}
-
-.carrusel-item {
-  flex: 0 0 auto;
-  scroll-snap-align: start;
-  background: white;
-  border-radius: 1rem;
-  overflow: hidden;
-  width: 512px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-}
-
-.carrusel-item img {
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
-}
-
-.carrusel-item .info {
-  padding: 1rem;
-}
-
-.carrusel-item .info h3 {
-  margin: 0;
-  font-size: 1.25rem;
-  color: #5a3e36;
-}
-
-.carrusel-item .info p {
-  margin: 0.5rem 0 0;
-  color: #555;
+  @apply md:gap-[8rem] md:scroll-pl-[10rem];
 }
 
 .carrusel-container::-webkit-scrollbar {
@@ -102,4 +97,95 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.carrusel-title {
+  width: 90%;
+  text-align: center;
+}
+
+.carrusel-title h2 {
+  font-family: 'Montserrat', serif;
+  font-optical-sizing: auto;
+  color: #5a3e36;
+  @apply mt-5 text-3xl md:text-6xl md:mt-6;
+}
+
+.carrusel-title p {
+  text-align: center;
+  font-family: 'Montserrat', serif;
+  color: #463124;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-style: italic;
+  @apply mt-2 mb-2 md:text-2xl md:mt-4 md:mb-4;
+}
 </style>
+
+<script type="module">
+  // Astro island-style router simulation for page sections
+  document.addEventListener("DOMContentLoaded", () => {
+
+    const links = document.querySelectorAll("a[href^='#']");
+
+    links.forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute("href"));
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+          history.pushState(null, '', link.getAttribute("href"));
+        }
+      });
+    });
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll('[data-reveal]');
+    
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    revealElements.forEach(el => observer.observe(el));
+
+    const carrusel = document.querySelector('.carrusel-container');
+    const items = document.querySelectorAll('.carrusel-item');
+    const images = document.querySelectorAll('.carrusel-item img');
+    let scrollIndex = 0;
+    const totalItems = items.length;
+    let interval;
+    let isHovered = false;
+
+    function autoScroll() {
+      interval = setInterval(() => {
+        if (!isHovered) {
+          scrollIndex = (scrollIndex + 1) % totalItems;
+          const scrollTo = items[scrollIndex].offsetLeft - carrusel.offsetLeft;
+          carrusel.scrollTo({ left: scrollTo, behavior: 'smooth' });
+        }
+      }, 5000);
+    }
+
+    function stopAutoScroll() {
+      clearInterval(interval);
+    }
+
+    images.forEach(img => {
+      img.addEventListener('mouseenter', () => {
+        isHovered = true;
+        stopAutoScroll();
+      });
+
+      img.addEventListener('mouseleave', () => {
+        isHovered = false;
+        autoScroll();
+      });
+    });
+
+    autoScroll();
+  });
+</script>
